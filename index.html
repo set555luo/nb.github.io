@@ -1,0 +1,402 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+
+<head>
+
+ <title>要一直快乐哦！！！</title>
+    <style>
+      body {
+        overflow: hidden;
+        margin: 0;
+      }
+ 
+      .twitter:hover a {
+        transform: rotate(-45deg) scale(1.05);
+      }
+      .twitter:hover i {
+        color: #21c2ff;
+      }
+      .twitter a {
+        bottom: -40px;
+        right: -75px;
+        transform: rotate(-45deg);
+      }
+      .twitter i {
+        bottom: 7px;
+        right: 7px;
+        color: #00aced;
+      }
+ 
+      .social-icon a {
+        position: absolute;
+        background: white;
+        color: white;
+        box-shadow: -1px -1px 20px 0px rgba(0, 0, 0, 0.3);
+        display: inline-block;
+        width: 150px;
+        height: 80px;
+        transform-origin: 50% 50%;
+        transition: 0.15s ease-out;
+      }
+      .social-icon i {
+        position: absolute;
+        pointer-events: none;
+        z-index: 1000;
+        transition: 0.15s ease-out;
+      }
+ 
+      .youtube:hover a {
+        transform: rotate(45deg) scale(1.05);
+      }
+      .youtube:hover i {
+        color: #ec4c44;
+      }
+      .youtube a {
+        bottom: -40px;
+        left: -75px;
+        transform: rotate(45deg);
+      }
+      .youtube i {
+        bottom: 7px;
+        left: 7px;
+        color: #e62117;
+      }
+    </style>
+
+ <script type="text/javascript">
+
+window.onload = function () {
+
+	C = Math.cos; // cache Math objects
+
+	S = Math.sin;
+
+	U = 0;
+
+	w = window;
+
+	j = document;
+
+	d = j.getElementById("c");
+
+	c = d.getContext("2d");
+
+	W = d.width = w.innerWidth;
+
+	H = d.height = w.innerHeight;
+
+	c.fillRect(0, 0, W, H); // resize <canvas> and draw black rect (default)
+
+	c.globalCompositeOperation = "lighter"; // switch to additive color application
+
+	c.lineWidth = 0.2;
+
+	c.lineCap = "round";
+
+	var bool = 0, 
+
+		t = 0; // theta
+
+	d.onmousemove = function (e) {
+
+		if(window.T) {
+
+			if(D==9) { D=Math.random()*15; f(1); }
+
+			clearTimeout(T);
+
+		}
+
+		X = e.pageX; // grab mouse pixel coords
+
+		Y = e.pageY;
+
+		a=0; // previous coord.x
+
+		b=0; // previous coord.y 
+
+		A = X, // original coord.x
+
+		B = Y; // original coord.y
+
+		R=(e.pageX/W * 999>>0)/999;
+
+		r=(e.pageY/H * 999>>0)/999;
+
+		U=e.pageX/H * 360 >>0;
+
+		D=9;
+
+		g = 360 * Math.PI / 180;
+
+		T = setInterval(f = function (e) { // start looping spectrum
+
+			c.save();
+
+			c.globalCompositeOperation = "source-over"; // switch to additive color application
+
+			if(e!=1) {
+
+				c.fillStyle = "rgba(0,0,0,0.02)";
+
+				c.fillRect(0, 0, W, H); // resize <canvas> and draw black rect (default)
+
+			}
+
+			c.restore();
+
+			i = 25; while(i --) {
+
+				c.beginPath();
+
+				if(D > 450 || bool) { // decrease diameter
+
+					if(!bool) { // has hit maximum
+
+						bool = 1;
+
+					}
+
+					if(D < 0.1) { // has hit minimum
+
+						bool = 0;
+
+					}
+
+					t -= g; // decrease theta
+
+					D -= 0.1; // decrease size
+
+				}
+
+				if(!bool) {
+
+					t += g; // increase theta
+
+					D += 0.1; // increase size
+
+				}
+
+				q = (R / r - 1) * t; // create hypotrochoid from current mouse position, and setup variables (see: http://en.wikipedia.org/wiki/Hypotrochoid)
+
+				x = (R - r) * C(t) + D * C(q) + (A + (X - A) * (i / 25)) + (r - R); // center on xy coords
+
+				y = (R - r) * S(t) - D * S(q) + (B + (Y - B) * (i / 25));
+
+				if (a) { // draw once two points are set
+
+					c.moveTo(a, b);
+
+					c.lineTo(x, y)
+
+				}
+
+				c.strokeStyle = "hsla(" + (U % 360) + ",100%,50%,0.75)"; // draw rainbow hypotrochoid
+
+				c.stroke();
+
+				a = x; // set previous coord.x
+
+				b = y; // set previous coord.y
+
+			}
+
+			U -= 0.5; // increment hue
+
+			A = X; // set original coord.x
+
+			B = Y; // set original coord.y
+
+		}, 16);
+
+	}
+
+	j.onkeydown = function(e) { a=b=0; R += 0.05 }
+
+	d.onmousemove({pageX:300, pageY:290})
+
+}
+
+
+
+</script>
+
+</head>
+
+<body>
+  <script>
+        (function () {
+            var a_idx = 0;
+            window.onclick = function (event) {
+                var a = new Array("❤两岸猿声啼不住，轻舟已过万重山❤", "❤沉浸醲郁，含英咀华❤", "❤我站在今天设想过去又幻想未来，过去和未来在今天随意交叉，因而过去和未来刮着现在的风❤", "❤那时年少掷春光，花马踏蹄酒溅香❤", "❤事了拂衣去，深藏功与名❤", "❤我们哭着降临世界，却可以笑着走向永恒❤", "❤正义是永远杀不完的，因为真理永远存在❤", "❤金鳞岂是池中物，一遇风云变化龙❤", "❤男儿到死心如铁，看试手，补天裂❤",
+                    "❤平生不下泪，于此泣无穷❤", "❤我误以为命运掌握在别人手里，而没有意识到我可以为自己的人生执笔。 ---塞巴斯蒂安·巴里-❤", "❤从来如此，便对么？ ---鲁迅-❤","❤你没有走错路，你是在等待风的到来。 ---伊吹有喜-❤","❤星星之火可以燎原❤");
+ 
+                var heart = document.createElement("b"); //创建b元素
+                heart.onselectstart = new Function('event.returnValue=false'); //防止拖动
+ 
+                document.body.appendChild(heart).innerHTML = a[a_idx]; //将b元素添加到页面上
+                a_idx = (a_idx + 1) % a.length;
+                heart.style.cssText = "position: fixed;left:-100%;"; //给p元素设置样式
+ 
+                var f = 16, // 字体大小
+                    x = event.clientX - f / 2, // 横坐标
+                    y = event.clientY - f, // 纵坐标
+                    c = randomColor(), // 随机颜色
+                    a = 1, // 透明度
+                    s = 1.2; // 放大缩小
+ 
+                var timer = setInterval(function () { //添加定时器
+                    if (a <= 0) {
+                        document.body.removeChild(heart);
+                        clearInterval(timer);
+                    } else {
+                        heart.style.cssText = "font-size:16px;cursor: default;position: fixed;color:" +
+                            c + ";left:" + x + "px;top:" + y + "px;opacity:" + a + ";transform:scale(" +
+                            s + ");";
+ 
+                        y--;
+                        a -= 0.016;
+                        s += 0.002;
+                    }
+                }, 15)
+ 
+            }
+            // 随机颜色
+            function randomColor() {
+ 
+                return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math
+                .random() * 255)) + ")";
+ 
+            }
+        }());
+    </script>
+
+<canvas id="c"></canvas>
+    <canvas></canvas>
+ 
+    <script>
+      "use strict";
+ 
+      var canvas = document.querySelector("canvas");
+      var c = canvas.getContext("2d");
+ 
+      canvas.width = innerWidth;
+      canvas.height = innerHeight;
+ 
+      var mouse = {
+        x: innerWidth / 2,
+        y: innerHeight / 2 - 80,
+      };
+ 
+      var colors = ["#00bdff", "#4d39ce", "#088eff"];
+ 
+      addEventListener("mousemove", function (event) {
+        mouse.x = event.clientX;
+        mouse.y = event.clientY;
+      });
+ 
+      addEventListener("resize", function () {
+        canvas.width = innerWidth;
+        canvas.height = innerHeight;
+ 
+        init();
+      });
+ 
+      function randomIntFromRange(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+      }
+ 
+      function randomColor(colors) {
+        return colors[Math.floor(Math.random() * colors.length)];
+      }
+ 
+      function Particle(x, y, radius, color) {
+        var _this = this;
+ 
+        var distance = randomIntFromRange(50, 120);
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+        this.color = color;
+        this.radians = Math.random() * Math.PI * 2;
+        this.velocity = 0.05;
+        this.distanceFromCenter = {
+          x: distance,
+          y: distance,
+        };
+        this.prevDistanceFromCenter = {
+          x: distance,
+          y: distance,
+        };
+        this.lastMouse = { x: x, y: y };
+ 
+        this.update = function () {
+          var lastPoint = { x: _this.x, y: _this.y };
+          _this.radians += _this.velocity;
+ 
+          _this.lastMouse.x += (mouse.x - _this.lastMouse.x) * 0.05;
+          _this.lastMouse.y += (mouse.y - _this.lastMouse.y) * 0.05;
+ 
+          _this.distanceFromCenter.x =
+            _this.prevDistanceFromCenter.x + Math.sin(_this.radians) * 100;
+          _this.distanceFromCenter.y =
+            _this.prevDistanceFromCenter.x + Math.sin(_this.radians) * 100;
+ 
+          _this.x =
+            _this.lastMouse.x +
+            Math.cos(_this.radians) * _this.distanceFromCenter.x;
+          _this.y =
+            _this.lastMouse.y +
+            Math.sin(_this.radians) * _this.distanceFromCenter.y;
+ 
+          _this.draw(lastPoint);
+        };
+ 
+        this.draw = function (lastPoint) {
+          c.beginPath();
+          c.strokeStyle = _this.color;
+          c.lineWidth = _this.radius;
+          c.moveTo(lastPoint.x, lastPoint.y);
+          c.lineTo(_this.x, _this.y);
+          c.stroke();
+          c.closePath();
+        };
+      }
+ 
+      var particles = undefined;
+      function init() {
+        particles = [];
+ 
+        for (var i = 0; i < 50; i++) {
+          var radius = Math.random() * 2 + 1;
+          particles.push(
+            new Particle(
+              canvas.width / 2,
+              canvas.height / 2,
+              radius,
+              randomColor(colors)
+            )
+          );
+        }
+      }
+ 
+      function animate() {
+        requestAnimationFrame(animate);
+        c.fillStyle = "rgba(255, 255, 255, 0.05)";
+        c.fillRect(0, 0, canvas.width, canvas.height);
+ 
+        particles.forEach(function (particle) {
+          particle.update();
+        });
+      }
+ 
+      init();
+      animate();
+    </script>
+
+</body>
+
+</html>
